@@ -1,0 +1,17 @@
+package Graphs;
+
+import Array_Chain_Stack.Chain;
+/**
+ * 
+ * @author Anderson Mahecha
+ *
+ */
+public interface Graphs {
+	void addVertex(Vertex v);
+	void addEdge(Vertex fromVert, Vertex toVert);
+	void addEdge(Vertex fromVert, Vertex toVert, int weight);
+	int removeEdge(Vertex fromVert, Vertex toVert);
+	int hasEdge(Vertex fromVert, Vertex toVert);
+	Chain outEdges(int i);
+	Chain inEdges(int i);
+}

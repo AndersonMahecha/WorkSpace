@@ -1,0 +1,13 @@
+package Graphs;
+
+public class Vertex {
+	Object vertexKey;
+	int w;
+	public Vertex(Object vertexKey, int w) {
+		super();
+		this.vertexKey = vertexKey;
+		this.w = w;
+	}
+	
+	
+}

@@ -1,0 +1,18 @@
+package Graphs;
+
+import Array_Chain_Stack.Chain;
+/**
+ * Interface that represents a Graph
+ * @author Anderson Mahecha
+ *
+ */
+public interface Graphs {
+	void addVertex(Object vertex);
+	Object removeVertex(Object remove);
+	void addEdge(Object fromVert, Object toVert);
+	void addEdge(Object fromVert, Object toVert, int weight);
+	int removeEdge(Object fromVert, Object toVert);
+	int hasEdge(Object fromVert, Object toVert);
+	Chain outEdges(int i);
+	Chain inEdges(int i);
+}

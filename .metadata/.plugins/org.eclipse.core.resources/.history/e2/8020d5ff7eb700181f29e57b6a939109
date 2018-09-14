@@ -1,0 +1,65 @@
+package Graphs;
+
+import Array_Chain_Stack.ArrayLinearList;
+import Array_Chain_Stack.Chain;
+
+public class GraphList implements Graph{
+	ArrayLinearList vertex;
+	ArrayLinearList adjacency;
+	
+	
+	
+	public GraphList() {
+		super();
+		vertex = new ArrayLinearList();
+		adjacency = new ArrayLinearList();
+	}
+
+	@Override
+	public void addVertex(Object vertex) {
+				
+	}
+
+	@Override
+	public Object removeVertex(Object remove) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addEdge(Object fromVert, Object toVert) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEdge(Object fromVert, Object toVert, int weight) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int removeEdge(Object fromVert, Object toVert) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int hasEdge(Object fromVert, Object toVert) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Chain outEdges(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Chain inEdges(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

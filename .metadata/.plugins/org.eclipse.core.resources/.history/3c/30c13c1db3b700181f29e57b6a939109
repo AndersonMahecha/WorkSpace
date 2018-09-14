@@ -1,0 +1,27 @@
+package Graphs;
+
+public class Edge {
+	int w;
+	int toVertex;
+	
+	
+	public Edge(int w, int fromVertex, int toVertex) {
+		super();
+		this.w = w;
+		this.toVertex = toVertex;
+	}
+
+
+	public Edge(Object fromVertex, Object toVertex) {
+		super();
+		this.fromVertex = fromVertex;
+		this.toVertex = toVertex;
+	}
+	
+	
+	
+	
+	
+	
+	
+}

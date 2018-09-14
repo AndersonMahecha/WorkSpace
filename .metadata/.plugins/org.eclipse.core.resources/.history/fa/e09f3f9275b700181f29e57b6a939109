@@ -1,0 +1,7 @@
+package Graphs;
+
+import Array_Chain_Stack.ArrayLinearList;
+
+public interface Graphs {
+	void addVertex();
+}

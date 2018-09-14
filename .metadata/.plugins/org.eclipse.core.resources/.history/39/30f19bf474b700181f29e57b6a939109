@@ -1,0 +1,13 @@
+package Graphs;
+
+import Array_Chain_Stack.ArrayLinearList;
+
+public class Graphs {
+	private ArrayLinearList a;
+
+	public Graphs() {
+		super();
+	}
+	
+	
+}

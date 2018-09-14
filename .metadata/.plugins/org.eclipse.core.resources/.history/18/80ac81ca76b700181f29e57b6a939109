@@ -1,0 +1,6 @@
+package Graphs;
+
+public interface Graphs {
+	void addVertex(Object o);
+	
+}
