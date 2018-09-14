@@ -2,17 +2,17 @@ package Graphs;
 
 public class Edge {
 	int w;
-	int toVertex;
+	Object toVertex;
 	
 	
-	public Edge(int w, int toVertex) {
+	public Edge(int w, Object toVertex) {
 		super();
 		this.w = w;
 		this.toVertex = toVertex;
 	}
 
 
-	public Edge(int toVertex) {
+	public Edge(Object toVertex) {
 		super();
 		this.toVertex = toVertex;
 	}

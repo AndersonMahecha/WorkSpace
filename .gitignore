@@ -1,6 +1,10 @@
 # Compiled class file
 *.class
 
+#Config File
+\.recommenders\*
+\.metadata\*
+
 # Log file
 *.log
 
