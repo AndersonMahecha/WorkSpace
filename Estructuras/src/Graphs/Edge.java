@@ -1,6 +1,6 @@
 package Graphs;
 
-public class Edge {
+public class Edge implements Comparable<Edge>{
 	int w;
 	Object toVertex;
 	Object fromVertex;
@@ -22,6 +22,20 @@ public class Edge {
 	@Override
 	public String toString() {
 		return "Vertice: "+fromVertex+" "+toVertex+" Valor:"+w;
+	}
+
+
+	@Override
+	public int compareTo(Edge o) {
+		if(w>o.w){
+			return -1;
+		}
+		else if(w<o.w){
+			return 1;
+		}
+		else{
+			return 0;
+		}
 	}
 	
 	

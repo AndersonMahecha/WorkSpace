@@ -1,6 +1,10 @@
 package Graphs;
 
+import javax.print.attribute.standard.Sides;
+
 import Array_Chain_Stack.ArrayLinearList;
+import Array_Chain_Stack.Chain;
+import PriorityQueue.MaxHeap;
 
 public class Graphs {
 	public static ArrayLinearList FloydWarshall(GraphList graph) {
@@ -122,5 +126,29 @@ public class Graphs {
 			}
 			System.out.println();
 		}
+	}
+
+
+	public static void MSTKruskal(GraphList graph){
+		ArrayLinearList a = new ArrayLinearList();
+		ArrayLinearList vert = new ArrayLinearList();
+		for(int i=0;i<graph.size;i++){
+			ArrayLinearList b = new ArrayLinearList();
+			b.add(b.size(), graph.Vertex.get(i));
+			vert.add(i, b);
+		}
+		Chain b = graph.outEdges(0);
+		MaxHeap m = new MaxHeap();
+		while(b.size()>=0){
+			m.put((Edge) b.remove(0));
+		}
+		while(m.size()>=0){
+			b.add(b.size(), m.removeMax());
+		}
+		for(int j=0;j<b.size();j++){
+			Edge e = (Edge) b.get(j);
+			
+		}
+		
 	}
 }

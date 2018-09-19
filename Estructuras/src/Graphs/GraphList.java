@@ -126,8 +126,14 @@ public class GraphList implements Graph{
 
 	@Override
 	public Chain outEdges(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		Chain c = new Chain();
+		for(int j=0;j<size;j++){
+			Chain a = (Chain) Adjacency.get(j);
+			for(int k=0;k<a.size();k++){
+				c.add(c.size(), a.get(k));
+			}
+		}
+		return c;
 	}
 
 	@Override
