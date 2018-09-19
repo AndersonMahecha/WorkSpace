@@ -68,23 +68,29 @@ public class Graphs {
 	
 	
 	public static int[][][] FloydWarshall2(GraphList graph) {
-		int a[][][] = new int[graph.size][graph.size][graph.size];
-		int n = graph.size;		
-		for(int k=0;k<n;k++) {
-			for(int i=0;i<n;i++) {
-				for(int j=0;j<n;j++) {
-					if(k==0) {
-						if(j==i) {
-							a[k][i][j] = 0;
-						}
-						else if(graph.hasEdge(graph.vertexIn(j),graph.vertexIn(i))!=0) {
-							a[k][i][j] = graph.hasEdge(graph.vertexIn(j),graph.vertexIn(i));
-						}
-						else {
-							a[k][i][j] = Integer.MAX_VALUE/100;
-						}
-					}
-					else if(k>=1){
+		int a[][][] = new int[graph.size+1][graph.size+1][graph.size+1];
+		int n = graph.size;	
+		
+		for(int i=1;i<=n;i++) {
+			for(int j=1;j<=n;j++) {
+				
+				if(j==i) {
+					a[0][i][j] = 0;
+				}
+				else if(graph.hasEdge(graph.vertexIn(j-1),graph.vertexIn(i-1))!=0) {
+					a[0][i][j] = graph.hasEdge(graph.vertexIn(j-1),graph.vertexIn(i-1));
+				}
+				else {
+					a[0][i][j] = Integer.MAX_VALUE/100;
+				}
+				
+			}
+		}
+
+		for(int k=1;k<=n;k++) {
+			for(int i=1;i<=n;i++) {
+				for(int j=1;j<=n;j++) {
+					if(k>=1){
 						a[k][j][i]=Math.min(a[k-1][j][i], a[k-1][k][i]+a[k-1][j][k]);
 					}
 				}
