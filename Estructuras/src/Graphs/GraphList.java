@@ -39,6 +39,7 @@ public class GraphList implements Graph{
 				}
 			}
 			Adjacency.remove(a);
+			size--;
 		}
 		return res;
 	}
@@ -48,7 +49,7 @@ public class GraphList implements Graph{
 		int a = Vertex.indexOf(fromVert);
 		int b = Vertex.indexOf(toVert);
 		if(a!=-1 && b!=-1) {
-			((Chain) Adjacency.get(a)).add(0,new Edge(toVert));
+			((Chain) Adjacency.get(a)).add(0,new Edge(toVert, fromVert));
 		}
 		else {
 			if(a==1)
@@ -64,12 +65,12 @@ public class GraphList implements Graph{
 		int a = Vertex.indexOf(fromVert);
 		int b = Vertex.indexOf(toVert);
 		if(a!=-1 && b!=-1) {
-			((Chain) Adjacency.get(a)).add(0,new Edge(weight, toVert));
+			((Chain) Adjacency.get(a)).add(0,new Edge(weight, toVert, fromVert));
 		}
 		else {
-			if(a==1)
+			if(a==-1)
 				throw new IllegalArgumentException("The From Vertex dont Exist");
-			if(b==1)
+			if(b==-1)
 				throw new IllegalArgumentException("The To Vertex dont Exist");
 		}
 	}
@@ -78,8 +79,15 @@ public class GraphList implements Graph{
 	public int removeEdge(Object fromVert, Object toVert) {
 		int a = Vertex.indexOf(fromVert);
 		int b = Vertex.indexOf(toVert);
+		int re = 0;
 		if(a!=-1 && b!=-1) {
-			
+			Chain c = (Chain) Adjacency.get(a);
+			for(int i=0;i<c.size();i++) {
+				if(((Edge) c.get(i)).toVertex.equals(toVert)) {
+					re = ((Edge) c.get(i)).w;
+					c.remove(i);
+				}
+			}
 		}
 		else {
 			if(a==1)
@@ -87,13 +95,33 @@ public class GraphList implements Graph{
 			if(b==1)
 				throw new IllegalArgumentException("The To Vertex dont Exist");
 		}
-		return 0;
+		return re;
 	}
 
 	@Override
 	public int hasEdge(Object fromVert, Object toVert) {
-		// TODO Auto-generated method stub
+		for(int i=0;i<size;i++) {
+			if(Vertex.get(i).equals(fromVert)) {
+				Chain a = (Chain) Adjacency.get(i);
+				for(int j=0;j<a.size();j++) {
+					Edge e = (Edge) a.get(j);
+					if(e.toVertex.equals(toVert)){
+						return e.w;
+					}
+				}
+				break;
+			}
+		}
 		return 0;
+	}
+	
+	public Object vertexIn(int i) {
+		if(i<=size) {
+			return Vertex.get(i);
+		}
+		else {
+			throw new IndexOutOfBoundsException("The vertex dont exist");
+		}
 	}
 
 	@Override
@@ -108,4 +136,18 @@ public class GraphList implements Graph{
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		String a = "";
+		for(int i=0;i<size;i++) {
+			Chain c = (Chain) Adjacency.get(i);
+			a+=Vertex.get(i);
+			a+=":";
+			for(int j=0;j<c.size();j++) {
+				a+=c.get(j).toString()+",";
+			}
+			a+="\n";
+		}
+		return a;
+	}
 }
