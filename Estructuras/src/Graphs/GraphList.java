@@ -7,6 +7,7 @@ public class GraphList implements Graph{
 	ArrayLinearList Vertex;
 	ArrayLinearList Adjacency;
 	int size;
+	boolean bidi;
 	
 	
 	public GraphList() {
@@ -14,6 +15,14 @@ public class GraphList implements Graph{
 		Vertex = new ArrayLinearList();
 		Adjacency = new ArrayLinearList();
 		size = 0;
+	}
+	
+	public GraphList(Boolean bi) {
+		super();
+		Vertex = new ArrayLinearList();
+		Adjacency = new ArrayLinearList();
+		size = 0;
+		bidi = bi;
 	}
 
 	@Override
@@ -50,6 +59,9 @@ public class GraphList implements Graph{
 		int b = Vertex.indexOf(toVert);
 		if(a!=-1 && b!=-1) {
 			((Chain) Adjacency.get(a)).add(0,new Edge(toVert, fromVert));
+			if(bidi) {
+				((Chain) Adjacency.get(b)).add(0,new Edge(fromVert, toVert));
+			}
 		}
 		else {
 			if(a==1)
@@ -66,6 +78,9 @@ public class GraphList implements Graph{
 		int b = Vertex.indexOf(toVert);
 		if(a!=-1 && b!=-1) {
 			((Chain) Adjacency.get(a)).add(0,new Edge(weight, toVert, fromVert));
+			if(bidi) {
+				((Chain) Adjacency.get(b)).add(0,new Edge(weight, fromVert, toVert));
+			}
 		}
 		else {
 			if(a==-1)
@@ -86,6 +101,14 @@ public class GraphList implements Graph{
 				if(((Edge) c.get(i)).toVertex.equals(toVert)) {
 					re = ((Edge) c.get(i)).w;
 					c.remove(i);
+				}
+			}
+			if(bidi) {
+				Chain c1 = (Chain) Adjacency.get(b);
+				for(int i=0;i<c1.size();i++) {
+					if(((Edge) c1.get(i)).toVertex.equals(fromVert)) {
+						c1.remove(i);
+					}
 				}
 			}
 		}
@@ -126,14 +149,14 @@ public class GraphList implements Graph{
 
 	@Override
 	public Chain outEdges(int i) {
-		Chain c = new Chain();
-		for(int j=0;j<size;j++){
-			Chain a = (Chain) Adjacency.get(j);
-			for(int k=0;k<a.size();k++){
-				c.add(c.size(), a.get(k));
+		Chain a = new Chain();
+		for(int i2=0;i2<Adjacency.size();i2++) {
+			Chain b = (Chain) Adjacency.get(i2);
+			for(int j=0;j<b.size();j++) {
+				a.add(0, b.get(j));
 			}
 		}
-		return c;
+		return a;
 	}
 
 	@Override

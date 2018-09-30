@@ -1,5 +1,4 @@
 package Graphs;
-
 public class Edge implements Comparable<Edge>{
 	int w;
 	Object toVertex;
