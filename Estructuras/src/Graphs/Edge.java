@@ -1,10 +1,10 @@
 package Graphs;
 public class Edge implements Comparable<Edge>{
-	int w;
+	public float w;
 	Object toVertex;
 	Object fromVertex;
 	
-	public Edge(int w, Object toVertex, Object fromVertex) {
+	public Edge(float w, Object toVertex, Object fromVertex) {
 		super();
 		this.w = w;
 		this.fromVertex = fromVertex;

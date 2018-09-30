@@ -73,7 +73,7 @@ public class GraphList implements Graph{
 	}
 
 	@Override
-	public void addEdge(Object fromVert, Object toVert, int weight) {
+	public void addEdge(Object fromVert, Object toVert, float weight) {
 		int a = Vertex.indexOf(fromVert);
 		int b = Vertex.indexOf(toVert);
 		if(a!=-1 && b!=-1) {
@@ -91,10 +91,10 @@ public class GraphList implements Graph{
 	}
 
 	@Override
-	public int removeEdge(Object fromVert, Object toVert) {
+	public float removeEdge(Object fromVert, Object toVert) {
 		int a = Vertex.indexOf(fromVert);
 		int b = Vertex.indexOf(toVert);
-		int re = 0;
+		float re = 0;
 		if(a!=-1 && b!=-1) {
 			Chain c = (Chain) Adjacency.get(a);
 			for(int i=0;i<c.size();i++) {
@@ -122,7 +122,7 @@ public class GraphList implements Graph{
 	}
 
 	@Override
-	public int hasEdge(Object fromVert, Object toVert) {
+	public float hasEdge(Object fromVert, Object toVert) {
 		for(int i=0;i<size;i++) {
 			if(Vertex.get(i).equals(fromVert)) {
 				Chain a = (Chain) Adjacency.get(i);

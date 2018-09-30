@@ -30,21 +30,21 @@ public interface Graph {
 	 * @param toVert
 	 * @param weight
 	 */
-	void addEdge(Object fromVert, Object toVert, int weight);
+	void addEdge(Object fromVert, Object toVert, float weight);
 	/**
 	 * 
 	 * @param fromVert
 	 * @param toVert
 	 * @return
 	 */
-	int removeEdge(Object fromVert, Object toVert);
+	float removeEdge(Object fromVert, Object toVert);
 	/**
 	 * 
 	 * @param fromVert
 	 * @param toVert
 	 * @return
 	 */
-	int hasEdge(Object fromVert, Object toVert);
+	float hasEdge(Object fromVert, Object toVert);
 	/**
 	 * 
 	 * @param i
