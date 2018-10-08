@@ -17,8 +17,8 @@ public class Graphs {
 			a.add(k, b);
 			for(int i=1;i<n;i++) {
 				for(int j=1;j<n;j++) {
-					int val = Math.min((int) ((ArrayLinearList) ((ArrayLinearList) a.get(k-1)).get(i)).get(j), (int)((ArrayLinearList) ((ArrayLinearList) a.get(k-1)).get(k)).get(j)+
-							(int)((ArrayLinearList) ((ArrayLinearList) a.get(k-1)).get(i)).get(k));
+					float val = Math.min((float) ((ArrayLinearList) ((ArrayLinearList) a.get(k-1)).get(i)).get(j), (float)((ArrayLinearList) ((ArrayLinearList) a.get(k-1)).get(k)).get(j)+
+							(float)((ArrayLinearList) ((ArrayLinearList) a.get(k-1)).get(i)).get(k));
 					((ArrayLinearList) ((ArrayLinearList) a.get(k)).get(i)).set(j, val);
 				}
 			}
@@ -31,7 +31,7 @@ public class Graphs {
 			ArrayLinearList c = new ArrayLinearList();
 			b.add(i, c);
 			for(int j=0;j<n;j++) {
-				((ArrayLinearList) b.get(i)).add(j,0);
+				((ArrayLinearList) b.get(i)).add(j,Float.parseFloat("0"));
 			}
 		}
 	}
@@ -44,17 +44,17 @@ public class Graphs {
 			a.add(i, b);
 			for(int j=0;j<=n;j++) {
 				if(j==0 || i==0) {
-					b.add(j, 0);
+					b.add(j, Float.parseFloat("0"));
 				}
 				else {
 					if(i==j) {
-						b.add(j, 0);
+						b.add(j, Float.parseFloat("0"));
 					}
 					else if(g.hasEdge(g.vertexIn(j-1),g.vertexIn(i-1))!=0) {
-						b.add(j, g.hasEdge(g.vertexIn(j-1),g.vertexIn(i-1)));
+						b.add(j, g.hasEdge((int)g.vertexIn(j-1),g.vertexIn(i-1)));
 					}
 					else {
-						b.add(j, Integer.MAX_VALUE/100);
+						b.add(j, Float.MAX_VALUE/100);
 					}
 				}
 				
@@ -67,8 +67,8 @@ public class Graphs {
 		int n=a.size();
 		for(int i=1;i<n;i++) {
 			for(int j=1;j<n;j++) {
-				int k = (int) ((ArrayLinearList) ((ArrayLinearList) a.get(m)).get(j)).get(i);
-				if(k==Integer.MAX_VALUE/100){
+				float k = (float) ((ArrayLinearList) ((ArrayLinearList) a.get(m)).get(j)).get(i);
+				if(k==Float.MAX_VALUE/100){
 					System.out.printf("%5s " , "i");
 				}
 				else{

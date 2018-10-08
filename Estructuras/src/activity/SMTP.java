@@ -20,12 +20,12 @@ public class SMTP {
 				g.addVertex(j);
 			}
 			for(int j=0;j<m;j++) {
-				g.addEdge(in.nextInt(), in.nextInt(), in.nextInt());
+				g.addEdge(in.nextInt(), in.nextInt(), in.nextFloat());
 			}
 			ArrayLinearList r = Graphs.FloydWarshall(g);
 			System.out.print("Case #"+(i+1)+": ");
-			int a = (int) ((ArrayLinearList) ((ArrayLinearList) r.get(r.size()-1)).get(s+1)).get(t+1);
-			if(a == Integer.MAX_VALUE/100) {
+			float a = (float) ((ArrayLinearList) ((ArrayLinearList) r.get(r.size()-1)).get(s+1)).get(t+1);
+			if(a == Float.MAX_VALUE/100) {
 				System.out.println("unreachable");
 			}
 			else {
